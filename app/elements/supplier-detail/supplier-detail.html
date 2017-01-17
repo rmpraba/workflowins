@@ -1,0 +1,79 @@
+<!-- Component import -->
+
+<link rel="import" href="..\..\bower_components/polymer/polymer.html">
+<link rel="import" href="../supplier-list/supplier-list.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../itemsummary-page/itemsummary-page.html">
+<link rel="import" href="../customer-list/customer-list.html">
+<link rel="import" href="../itemprice-card/itemprice-card.html">
+<link rel="import" href="../customersupplier-card/customersupplier-card.html">
+<!-- Component registeration -->
+<dom-module id="supplier-detail">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      .card{
+	    	@apply(--layout-vertical);
+		    margin-left: 5%;
+      }
+      paper-button{
+	      text-align: center;
+	      width: 15%;
+	      background-color: #A0A0A0;
+        font-family: calibri;
+        font-size: 17px;
+        color: black;
+        height: 35px;
+	      margin-top: 4%;	          
+      }
+      .btn{
+        @apply(--layout-horizontal);
+      }
+      .choice{
+        margin-left: -70%;
+      }
+      .list{
+        @apply(--layout-vertical);
+      }
+      paper-input{
+        width:30%;
+        margin-left: 10%;
+        --paper-input-container-label: { color: red };
+        font-family: calibri;
+        font-size: 16px;
+      }
+      .suppliercard{
+        @apply(--layout-horizontal);
+      }
+      itemprice-card{
+        margin-left: 10%;
+      }
+    </style>
+    <div class="card">
+    <customersupplier-card id="customersuppliercard"></customersupplier-card>
+    <div class="list" hidden$="{{hidesupplier}}">
+    <template is="dom-repeat" items="{{supArray}}" as="item">
+    <div class="suppliercard">
+    <supplier-list id="{{item.id}}" supname="{{item.supname}}"></supplier-list>
+    <itemprice-card></itemprice-card>
+    </div>
+    </template>
+    </div>
+    <div class="cuslist" hidden$="{{hidecustomer}}">
+    <template is="dom-repeat" items="{{supArray}}" as="item">
+    <customer-list id="{{item.id}}" supname="{{item.supname}}"></customer-list>
+    </template>
+    </div>
+    <div class="btn">
+    <paper-button disabled="{{Btn_disable_flag}}" id="add" on-click="FnAddSupplier">Add</paper-button>
+    <paper-button disabled="{{Btn_disable_flag}}" id="saveitem" on-click="FnSaveSupplier">Save</paper-button>
+    </div>
+    </div>
+     <!--Including dialog component here-->
+    <itemsummary-page id="ID_Dialogpage"></itemsummary-page>
+  </template>
+     <!-- JS file import -->
+  <script src="../../scripts/supplier-detail.js"></script>
+</dom-module>

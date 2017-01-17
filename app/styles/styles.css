@@ -1,0 +1,7 @@
+@font-face{
+	font-family: Calibri;
+	src:url('../fonts/Calibri.ttf');
+}
+body{
+	font-family: 'lato light' !important;
+}

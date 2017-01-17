@@ -1,0 +1,89 @@
+[
+  {
+    "role": [
+      {
+        "rolename": "Security guard",
+         "RoleFlag": "0",
+         "menu" : ["Inward Items Register","Outward Items Register"]
+      },
+      {
+        "rolename": "Stores manager",
+        "RoleFlag": "1",
+        "status":"Stores",
+        "newstatus":"OldStores",
+        "updatestatus":"Quality",
+        "containerstatus":"",
+        "menu" : ["GRN Flow","Add Intent","External Intent","Internal Intent"]
+      },
+      {
+        "rolename": "Production manager",
+        "RoleFlag": "2",
+        "status":"Production",
+        "newstatus":"OldProduction",
+        "updatestatus":"Quality",
+        "containerstatus":"OldStores",
+        "menu" : ["GRN Flow","Add Intent","External Intent","Internal Intent"]
+      },
+      {
+        "rolename": "Quality manager",
+        "RoleFlag": "3",
+        "status":"Quality",
+        "newstatus":"OldQuality",
+        "updatestatus":"Purchase",
+        "containerstatus":"OldStores",
+        "menu" : ["GRN Flow","Test Certificate","Internal Intent"]
+      },
+      {
+        "rolename": "Purchase manager",
+        "RoleFlag": "4",
+        "status":"Purchase",
+        "newstatus":"OldPurchase",
+        "updatestatus":"Confirm",
+        "containerstatus":"OldQuality",
+        "menu" : ["GRN Flow","External Intent","Add Supplier"]
+      },
+      {
+        "rolename": "Administration manager",
+        "RoleFlag": "5",
+        "menu" : ["External Intent"]
+      },
+      {
+        "rolename": "Administration admin",
+        "RoleFlag": "6",
+        "menu" : ["Add Item","User Management","Department Creation","Role Creation"]
+      },
+      {
+        "rolename": "Maintenance manager",
+        "RoleFlag": "7",
+        "menu" : ["Add Intent","External Intent"]
+      },
+      {
+        "rolename": "Office admin",
+        "RoleFlag": "8",
+        "menu" : ["Add Intent","External Intent"]
+      },
+      {
+        "rolename": "Ceo ceo",
+        "RoleFlag": "9",
+        "menu" : ["Add Intent","External Intent","Approve Supplier","Approve Customer","Approve User"]
+      },
+      {
+        "rolename": "Sales manager",
+        "RoleFlag": "10",
+        "menu" : ["Outward Items Report","Add Customer"]
+      },
+      {
+        "rolename": "Logistics manager",
+        "RoleFlag": "11"
+      }
+    ]
+  },
+    {
+    "flowbutton": [
+      "Gate Accept",
+      "Physical Inspection",
+      "Quality Inspection",
+      "Confirm Purchase"
+    ]
+  }
+]

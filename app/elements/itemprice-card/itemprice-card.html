@@ -1,0 +1,36 @@
+<!-- Component import -->
+<link rel="import" href="..\..\bower_components/polymer/polymer.html">
+<link rel="import" href="..\..\bower_components/paper-input/paper-input.html">
+<!-- Component registeration -->
+<dom-module id="itemprice-card">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      paper-input{
+        text-align: left;
+        --paper-input-container-label: { color: red };
+        font-family: calibri;
+        font-size: 16px;
+      }
+    </style>
+      <paper-input id="input" label="Item price" value="{{price}}" on-change="FnInputChanged" required></paper-input>
+  </template>
+  <script>
+  (function() {
+    'use strict';
+    Polymer({
+      is: 'itemprice-card',
+    ready:function(){
+      this.price="";
+    },
+    // Functiom which invoke while changing the item price and binding to the respoective cards
+    FnInputChanged:function(){
+    document.querySelector('supplier-detail').FnSetPrice(this.price);
+    document.querySelector('supplieradditem-card').FnSetPrice(this.price);
+    }
+    });
+  })();
+  </script>
+</dom-module>

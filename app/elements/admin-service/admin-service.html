@@ -1,0 +1,173 @@
+<!-- Component import -->
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../dialog-page/dialog-page.html">
+<!-- Component registeration -->
+<dom-module id="admin-service">
+  <template>
+    <!--Component which makes write req to write the item info-->
+    <iron-ajax
+      id="additemwriteajax"
+      url="{{url}}"
+      params='{{param}}'
+      method="post"
+      handle-as="json"
+      content-type="application/json"
+      on-response="additemwriteResponse">
+    </iron-ajax>
+    <!--Component to write supplier information-->
+    <iron-ajax
+	      id="additemwritesupplierajax"
+	      url="{{writesupplierurl}}"
+	      params='{{writesupplierparam}}'
+	      method="post"
+	      handle-as="json"
+	      content-type="application/json"
+	      on-response="additemwritesupplierResponse">
+    </iron-ajax>
+    <!--Component which makes read req to fetch the purchase type info-->
+    <iron-ajax      
+      id="purchasetypereadajax"
+      url="{{purchasetypeurl}}"
+      params='{{purchasetypeparam}}'
+      method="post"
+      handle-as="json"
+      content-type="application/json"
+      on-response="purchasetypereadResponse">
+    </iron-ajax>
+    <!--Component which makes read req to fetch the item type info-->
+    <iron-ajax      
+      id="additemreadajax"
+      url="{{readurl}}"
+      params='{{readparam}}'
+      method="post"
+      handle-as="json"
+      content-type="application/json"
+      on-response="additemreadResponse">
+    </iron-ajax>
+    <!--Component which makes read req to fetch the group type info-->
+    <iron-ajax      
+      id="additemgroupreadajax"
+      url="{{groupurl}}"
+      params='{{groupparam}}'
+      method="post"
+      handle-as="json"
+      content-type="application/json"
+      on-response="additemgroupreadResponse">
+    </iron-ajax>
+    <!--Component which makes read req to fetch the Supplier info-->
+    <iron-ajax      
+      id="itemsupplierreadajax"
+      url="{{supplierurl}}"
+      params='{{supplierparam}}'
+      method="post"
+      handle-as="json"
+      content-type="application/json"
+      on-response="itemsupplierreadResponse">
+    </iron-ajax>
+    <!--Component which makes write req to write the item info-->
+    <iron-ajax
+      id="additemsearchajax"
+      url="{{searchurl}}"
+      params='{{searchparam}}'
+      method="post"
+      handle-as="json"
+      content-type="application/json"
+      on-response="additemsearchResponse">
+    </iron-ajax>
+    <!--Component which makes update req to update the item info-->
+    <iron-ajax
+      id="additemupdateajax"
+      url="{{updateurl}}"
+      params='{{updateparam}}'
+      method="post"
+      handle-as="json"
+      content-type="application/json"
+      on-response="additemupdateResponse">
+    </iron-ajax>
+    <!--Component which makes write req to write the item info-->
+    <iron-ajax
+      id="addcustomeritemwriteajax"
+      url="{{customerurl}}"
+      params='{{customerparam}}'
+      method="post"
+      handle-as="json"
+      content-type="application/json"
+      on-response="addcustomeritemwriteResponse">
+    </iron-ajax>
+    <!-- Component which make write request for writing customer information -->
+    <iron-ajax
+        id="additemwritecustomerajax"
+        url="{{writecustomerurl}}"
+        params='{{writecustomerparam}}'
+        method="post"
+        handle-as="json"
+        content-type="application/json"
+        on-response="additemwritecustomerResponse">
+    </iron-ajax>
+    <!--Component which makes read req to fetch the container info-->
+    <iron-ajax      
+      id="containerreadajax"
+      url="{{containerreadurl}}"
+      params='{{containerreadparam}}'
+      method="post"
+      handle-as="json"
+      content-type="application/json"
+      on-response="containerreadResponse">
+    </iron-ajax>
+    <!--Component which makes read req to fetch the unit info-->
+    <iron-ajax      
+      id="unitreadajax"
+      url="{{unitreadurl}}"
+      params='{{unitreadparam}}'
+      method="post"
+      handle-as="json"
+      content-type="application/json"
+      on-response="unitreadResponse">
+    </iron-ajax>
+    <!--Component which makes read req to fetch item attached with the customer or supplier-->
+    <iron-ajax      
+      id="customersupplierajax"
+      url="{{customersupplierurl}}"
+      params='{{customersupplierparam}}'
+      method="post"
+      handle-as="json"
+      content-type="application/json"
+      on-response="customersupplierResponse">
+    </iron-ajax>
+    <!--Component to delete the item attached supplier-->
+    <iron-ajax      
+      id="deleteitemsupplierajax"
+      url="{{deleteitemsupplierurl}}"
+      params='{{deleteitemsupplierparam}}'
+      method="post"
+      handle-as="json"
+      content-type="application/json"
+      on-response="deleteitemsupplierResponse">
+    </iron-ajax>
+    <!--Component to update price of a supplier item-->
+    <iron-ajax      
+      id="updateitempricesupplierajax"
+      url="{{updateitempricesupplierurl}}"
+      params='{{updateitempricesupplierparam}}'
+      method="post"
+      handle-as="json"
+      content-type="application/json"
+      on-response="updateitempricesupplierResponse">
+    </iron-ajax>
+    <!--Component to delete the item attached customer-->
+    <iron-ajax      
+      id="deleteitemcustomerajax"
+      url="{{deleteitemcustomerurl}}"
+      params='{{deleteitemcustomerparam}}'
+      method="post"
+      handle-as="json"
+      content-type="application/json"
+      on-response="deleteitemcustomerResponse">
+    </iron-ajax>
+  <!--Dialog component import-->
+  <dialog-page id="dialogpage"></dialog-page>
+  </template>
+  <!--Importing JS file for this page-->
+  <script src="../../scripts/admin-service.js"></script>
+</dom-module>

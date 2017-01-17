@@ -1,0 +1,85 @@
+/**
+ * Created by praba on 2/10/2016.
+ */
+(function() {
+  Polymer({
+    is: "webcomponent-service",
+    ready:function()
+    {
+      //localStorage.setItem("curr_sess_showpage","login-card");
+    },
+    callWebcomponentService:function(){
+      //alert("calling....");
+      this.$.webcomponentreadajax.generateRequest();
+    },
+    FnWebcomponentreadResponse:function(e) {
+      this.current_page=localStorage.getItem("curr_sess_showpage");
+      // alert(this.current_page);
+      var arr = e.detail.response;
+      //alert(JSON.stringify(arr));
+      var labelvalue=[];
+      var errorlabelvalue=[];
+      //Binding labels to login-card
+      for(var i=1;i<arr.length;i++) {
+        //alert((arr[i].Page[0].page[0]));
+        if ((arr[i].Page[0].page[0]) == this.current_page) {
+
+          labelvalue = arr[i].Page[1].Label;
+
+          document.querySelector(arr[i].Page[0].page[1]).label = labelvalue;
+
+        }
+      }
+    },
+    /*Receives request after successfull validation of user login and invoke ajax for retrive all roles*/
+    roleconfigreadService:function(){
+      this.$.roleconfigreadajax.generateRequest();
+    },
+    /*Role response received*/
+    FnRoleconfigreadResponse:function(e){
+      var roleconfig=e.detail.response;
+      //alert(JSON.stringify(roleconfig));
+      for(var i=0;i<roleconfig[0].role.length;i++){
+        /*Checking logged role with role config json if exists returns the flag for the corresponding role then it will navigate to the index home(my-app js) page*/
+        if(sessionStorage.getItem("loggedrole")==roleconfig[0].role[i].rolename){
+          sessionStorage.setItem("curr_sess_roleflag",roleconfig[0].role[i].RoleFlag);
+
+          if(sessionStorage.getItem("curr_sess_roleflag")!=null)
+          window.location.href="../elements/indexhome.html";
+        }
+      }
+    },
+    //Method invoke ajax service to fetch menu info for the currently logged uer's drawer menu items
+    drawermenureadService:function(){
+      this.$.drawermenureadAjax.generateRequest();
+    },
+    //Response for the requested drawer menu items
+    drawermenureadResponse:function(e)
+    {
+      var arr=e.detail.response;
+      //alert(JSON.stringify(arr));
+      var sessrole=sessionStorage.getItem("curr_sess_roleflag");
+      for(var i=0;i<arr[0].role.length;i++) {
+        if (arr[0].role[i].RoleFlag == sessrole) {
+          document.querySelector('drawermenu-list').itemArray = arr[0].role[i].menu;
+        }
+      }
+    },
+    FnusernamereadService:function(){
+      // alert('hi');
+      this.usernamereadurl=sessionStorage.getItem("curr_sess_url")+"usernameread-service";
+      var obj={"loggeduserid":""};      
+      obj.loggeduserid=sessionStorage.getItem("loggeduser");
+      // alert(sessionStorage.getItem("loggeduser"));
+      this.usernamereadparam=obj;
+      this.$.usernamereadajax.generateRequest();
+    },
+    usernamereadResponse:function(e){      
+      alert(JSON.stringify(e.detail.response));
+      var arr=e.detail.response;
+      sessionStorage.setItem("curr_sess_loggeduser",arr[0].Employee_Name);
+      this.roleconfigreadService();
+      // document.querySelector('app-homepage').FnSetUsername(e.detail.response);
+    }
+  });
+})();

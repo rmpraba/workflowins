@@ -1,0 +1,19 @@
+<!-- Component import -->
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
+<dom-module id="url-service">
+
+  <template>
+  <!-- Component which make request to call the url -->
+    <iron-ajax
+      auto
+      id="urlreadajax"
+      url="../../config/url.json"
+      handle-as="json"
+      content-type="application/json"
+      on-response="urlreadResponse">
+    </iron-ajax>
+  </template>
+
+  <script src="../../scripts/url-service.js"></script>
+</dom-module>
